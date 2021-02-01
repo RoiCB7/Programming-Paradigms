@@ -11,6 +11,7 @@ public class Main {
 		File textFile = new File (args[0]); 
 		Scanner readText = new Scanner (textFile);
 		System.out.println("Success!");
+		textProcess (readText);
 		}
 		
 		catch (FileNotFoundException fnfe) {
@@ -19,7 +20,7 @@ public class Main {
 	}
 	
 	public static void textProcess (Scanner readText) {
-		
+		//This is where we can parse the text file.
 		
 	}
 

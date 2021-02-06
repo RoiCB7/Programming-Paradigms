@@ -30,8 +30,13 @@ public class Main {
 
 			if (c == '(') {
 				System.out.println("Found One");
+				i++;
+				while (i < line.length()) {
+				    if ((c <= 'z') && (c >= 'a')) {
+				        //add to array
+				    }
+				}
 			}
-
 		}
 
 	}

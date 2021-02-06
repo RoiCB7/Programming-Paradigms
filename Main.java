@@ -7,7 +7,7 @@ public class Main {
 	static ArrayList<Character> listOfChar = new ArrayList<Character>();
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-	    //this is a change
+	    //this is a change!
 
 		try {
 		File InputFile = new File (args[0]);

@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Main {
 	static ArrayList<Character> listOfChar = new ArrayList<Character>();
-	ArrayList<Clause> Clauselist = new ArrayList<Clause>();
+	static ArrayList<Clause> clauseList = new ArrayList<Clause>();
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -117,6 +117,8 @@ public class Main {
 				if (c == ')') {
 					// Initialize clause
 					// add clause to clause list
+					Clause clause = new Clause (x, y, z, boolX, boolY, boolZ);
+					clauseList.add(clause);
 				}
 			}
 			// error handle otherwise

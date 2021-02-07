@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Main {
 	 static ArrayList<Character> listOfChar = new ArrayList<Character>();
+	 ArrayList <Clause> Clauselist = new ArrayList<Clause>();
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	    //this is a change!
@@ -56,7 +57,7 @@ public class Main {
 			if ((c <= 'z') && (c >= 'a')) {
 		    	checkChar(c);
 		    	varCount++;
-		    	System.out.println(varCount);
+		    	System.out.println("Variable Count " + varCount);
 		    	
 			}
 				

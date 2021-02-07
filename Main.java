@@ -15,8 +15,9 @@ public class Main {
 		System.out.println("Success!");
 		textProcess(readFile);
 		
+		System.out.print("Contents of Arraylist: ");
 		for(int i =0; i < listOfChar.size(); i++) {
-			System.out.println(listOfChar.get(i));
+			System.out.print(listOfChar.get(i));
 		}
 		
 		}
@@ -38,20 +39,28 @@ public class Main {
 
 	public static void textProcess (Scanner readFile) {
 
-		String line = readFile.nextLine();
+		
+		int varCount = 0;
+		String line="";
 		char c;
+		while (readFile.hasNext()) {
+			line += readFile.nextLine();
+			line = line.replaceAll("\s+","");
+		}
+		
+		System.out.println(line);
+		
 		for (int i = 0; i < line.length(); i++) {
 			c = line.charAt(i);
 
-			if (c == '(') {
-				System.out.println("Found One");
-				i++;
-				while (i < line.length()) {
-				    if ((c <= 'z') && (c >= 'a')) {
-				    	checkChar(c);
-				    }
-				}
+			if ((c <= 'z') && (c >= 'a')) {
+		    	checkChar(c);
+		    	varCount++;
+		    	System.out.println(varCount);
+		    	
 			}
+				
+				
 		}
 		
 	}

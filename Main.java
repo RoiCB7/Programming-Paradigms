@@ -19,7 +19,17 @@ public class Main {
 
 			System.out.print("Contents of Arraylist: ");
 			for (int i = 0; i < listOfChar.size(); i++) {
-				System.out.print(listOfChar.get(i));
+				System.out.println(listOfChar.get(i));
+			}
+			
+			System.out.println("Contents of Clauselist: ");
+			for (int i = 0; i < clauseList.size(); i++) {
+				System.out.print(clauseList.get(i).getVar_a());
+				System.out.print(clauseList.get(i).getVar_b());
+				System.out.println(clauseList.get(i).getVar_c());
+				System.out.print(clauseList.get(i).isBool_a());
+				System.out.print(clauseList.get(i).isBool_b());
+				System.out.print(clauseList.get(i).isBool_c());
 			}
 
 		}
@@ -119,6 +129,7 @@ public class Main {
 					// add clause to clause list
 					Clause clause = new Clause (x, y, z, boolX, boolY, boolZ);
 					clauseList.add(clause);
+					
 				}
 			}
 			// error handle otherwise

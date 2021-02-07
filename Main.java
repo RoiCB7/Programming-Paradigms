@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-	static ArrayList<Character> listOfChar = new ArrayList<Character>();
+	 static ArrayList<Character> listOfChar = new ArrayList<Character>();
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	    //this is a change!
@@ -20,6 +20,18 @@ public class Main {
 			System.err.println("Cannot open file");
 		}
 	}
+	
+	
+	public static ArrayList<Character> checkChar (char c){
+		
+		if (listOfChar.contains(c)) {
+			System.out.println("Char " + c + " already exists in array");
+		}
+		else
+			listOfChar.add(c);
+		
+		return listOfChar;	
+	}
 
 	public static void textProcess (Scanner readFile) {
 
@@ -33,12 +45,13 @@ public class Main {
 				i++;
 				while (i < line.length()) {
 				    if ((c <= 'z') && (c >= 'a')) {
-				        //add to array
+				    	checkChar(c);
 				    }
 				}
 			}
 		}
-
+				
 	}
 
+	
 }

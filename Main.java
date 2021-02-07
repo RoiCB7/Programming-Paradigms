@@ -45,7 +45,7 @@ public class Main {
 		char c;
 		while (readFile.hasNext()) {
 			line += readFile.nextLine();
-			line = line.replaceAll("\s+","");
+			line = line.replaceAll("\\s+","");
 		}
 		
 		System.out.println(line);

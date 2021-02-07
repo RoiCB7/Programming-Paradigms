@@ -15,6 +15,10 @@ public class Main {
 		System.out.println("Success!");
 		textProcess(readFile);
 		
+		for(int i =0; i < listOfChar.size(); i++) {
+			System.out.println(listOfChar.get(i));
+		}
+		
 		}
 
 		catch (FileNotFoundException fnfe) {
@@ -50,12 +54,6 @@ public class Main {
 			}
 		}
 		
-				
 	}
-	
-	public String toString() {
-		return listOfChar.toString();		
-	}
-	
 	
 }

@@ -13,7 +13,7 @@ public class Main {
 		try {
 		File InputFile = new File (args[0]);
 		Scanner readFile = new Scanner (InputFile);
-		System.out.println("Success!");
+		System.out.println("File open was a Success!");
 		textProcess(readFile);
 		
 		System.out.print("Contents of Arraylist: ");
@@ -49,7 +49,7 @@ public class Main {
 			line = line.replaceAll("\\s+","");
 		}
 		
-		System.out.println(line);
+		System.out.println("Current Clause: " + line);
 		
 		for (int i = 0; i < line.length(); i++) {
 			c = line.charAt(i);

@@ -14,6 +14,7 @@ public class Main {
 		Scanner readFile = new Scanner (InputFile);
 		System.out.println("Success!");
 		textProcess(readFile);
+		
 		}
 
 		catch (FileNotFoundException fnfe) {
@@ -22,15 +23,13 @@ public class Main {
 	}
 	
 	
-	public static ArrayList<Character> checkChar (char c){
+	public static void checkChar (char c){
 		
 		if (listOfChar.contains(c)) {
 			System.out.println("Char " + c + " already exists in array");
 		}
 		else
-			listOfChar.add(c);
-		
-		return listOfChar;	
+			listOfChar.add(c);	
 	}
 
 	public static void textProcess (Scanner readFile) {
@@ -50,8 +49,13 @@ public class Main {
 				}
 			}
 		}
+		
 				
 	}
-
+	
+	public String toString() {
+		return listOfChar.toString();		
+	}
+	
 	
 }

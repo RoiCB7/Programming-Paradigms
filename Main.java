@@ -21,7 +21,7 @@ public class Main {
 			for (int i = 0; i < listOfChar.size(); i++) {
 				System.out.println(listOfChar.get(i));
 			}
-			
+
 			System.out.println("Contents of Clauselist: ");
 			for (int i = 0; i < clauseList.size(); i++) {
 				System.out.print(clauseList.get(i).getVar_a());
@@ -115,10 +115,14 @@ public class Main {
 							i++;
 							c = line.charAt(i);
 						} else {
+							System.out.println("Expression is invalid");
+							System.exit(0);
 							// error handling & exit due to invalid expression. If c is a lettter
 
 						}
 					} else {
+					    System.out.println("Expression is invalid");
+                        System.exit(0);
 						// error handling for invalid variable & exit program
 					}
 
@@ -129,7 +133,7 @@ public class Main {
 					// add clause to clause list
 					Clause clause = new Clause (x, y, z, boolX, boolY, boolZ);
 					clauseList.add(clause);
-					
+
 				}
 			}
 			// error handle otherwise

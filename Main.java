@@ -4,141 +4,148 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-	static ArrayList<Character> listOfChar = new ArrayList<Character>();
-	static ArrayList<Clause> clauseList = new ArrayList<Clause>();
+    static ArrayList<Variable> listOfChar = new ArrayList<Variable>();
+    static ArrayList<Clause> clauseList = new ArrayList<Clause>();
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		// this is a change!
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        // this is a change!
 
-		try {
-			File InputFile = new File(args[0]);
-			Scanner readFile = new Scanner(InputFile);
-			System.out.println("File open was a Success!");
-			textProcess(readFile);
+        try {
+            File InputFile = new File(args[0]);
+            Scanner readFile = new Scanner(InputFile);
+            System.out.println("File open was a Success!");
+            textProcess(readFile);
 
-			System.out.print("Contents of Arraylist: ");
-			for (int i = 0; i < listOfChar.size(); i++) {
-				System.out.println(listOfChar.get(i));
-			}
+            System.out.print("Contents of Arraylist: ");
+            for (int i = 0; i < listOfChar.size(); i++) {
+                System.out.println(listOfChar.get(i));
+            }
 
-			System.out.println("Contents of Clauselist: ");
-			for (int i = 0; i < clauseList.size(); i++) {
-				System.out.print(clauseList.get(i).getVar_a());
-				System.out.print(clauseList.get(i).getVar_b());
-				System.out.println(clauseList.get(i).getVar_c());
-				System.out.print(clauseList.get(i).isBool_a());
-				System.out.print(clauseList.get(i).isBool_b());
-				System.out.print(clauseList.get(i).isBool_c());
-			}
+            System.out.println("Contents of Clauselist: ");
+            for (int i = 0; i < clauseList.size(); i++) {
+                System.out.print(clauseList.get(i).getVar_a());
+                System.out.print(clauseList.get(i).getVar_b());
+                System.out.println(clauseList.get(i).getVar_c());
+                System.out.print(clauseList.get(i).isBool_a());
+                System.out.print(clauseList.get(i).isBool_b());
+                System.out.print(clauseList.get(i).isBool_c());
+            }
 
-		}
+        }
 
-		catch (FileNotFoundException fnfe) {
-			System.err.println("Cannot open file");
-		}
-	}
+        catch (FileNotFoundException fnfe) {
+            System.err.println("Cannot open file");
+        }
+    }
 
-	public static void checkChar(char c) {
+    public static void checkChar(char c) {
 
-		if (listOfChar.contains(c)) {
-			System.out.println("Char " + c + " already exists in array");
-		} else
-			listOfChar.add(c);
-	}
+        Variable newVar = new Variable(c);
 
-	public static void textProcess(Scanner readFile) {
+        if (listOfChar.contains(newVar)) {
+            System.out.println("Char " + newVar.getVarName() + " already exists in array");
+        } else
 
-		int varCount;
-		String line = "";
-		char c;
-		while (readFile.hasNext()) {
-			line += readFile.nextLine();
-			line = line.replaceAll("\\s+", "");
-		}
+            listOfChar.add(newVar);
+    }
 
-		System.out.println("Current Clause: " + line);
+    public static void textProcess(Scanner readFile) {
 
-		Boolean boolX;
-		Boolean boolY;
-		Boolean boolZ;
-		char x;
-		char y;
-		char z;
+        int varCount;
+        String line = "";
+        char c;
+        while (readFile.hasNext()) {
+            line += readFile.nextLine();
+            line = line.replaceAll("\\s+", "");
+        }
 
-		for (int i = 0; i < line.length(); i++) {
-			c = line.charAt(i);
+        System.out.println("Current Clause: " + line);
 
-			varCount = 0;
+        Boolean boolX;
+        Boolean boolY;
+        Boolean boolZ;
+        char x;
+        char y;
+        char z;
 
-			boolX = true;
-			boolY = true;
-			boolZ = true;
+        for (int i = 0; i < line.length(); i++) {
+            c = line.charAt(i);
 
-			x = ' ';
-			y = ' ';
-			z = ' ';
+            varCount = 0;
 
-			if (c == '(') {
+            boolX = true;
+            boolY = true;
+            boolZ = true;
 
-				i++;
-				c = line.charAt(i);
-				while (varCount < 3) {
+            x = ' ';
+            y = ' ';
+            z = ' ';
 
-					if ((c <= 'z') && (c >= 'a')) {
-						checkChar(c);
-						varCount++;
-						System.out.println("Variable Count " + varCount);
+            if (c == '(') {
 
-						if (varCount == 1) {
-							x = c;
-						} else if (varCount == 2) {
-							y = c;
-						} else
-							z = c;
+                i++;
+                c = line.charAt(i);
+                while (varCount < 3) {
 
-						i++;
-						c = line.charAt(i);
+                    if ((c <= 'z') && (c >= 'a')) {
+                        checkChar(c);
+                        varCount++;
+                        System.out.println("Variable Count " + varCount);
 
-						if (c == '\'') {
-							if (varCount == 1) {
-								boolX = false;
-							} else if (varCount == 2) {
-								boolY = false;
-							} else
-								boolZ = false;
-							i++;
-							c = line.charAt(i);
+                        if (varCount == 1) {
+                            x = c;
+                        } else if (varCount == 2) {
+                            y = c;
+                        } else
+                            z = c;
 
-						}
-						if (c == '+') {
-							i++;
-							c = line.charAt(i);
-						} else {
-							System.out.println("Expression is invalid");
-							System.exit(0);
-							// error handling & exit due to invalid expression. If c is a lettter
+                        i++;
+                        c = line.charAt(i);
 
-						}
-					} else {
-					    System.out.println("Expression is invalid");
+                        if (c == '\'') {
+                            if (varCount == 1) {
+                                boolX = false;
+                            } else if (varCount == 2) {
+                                boolY = false;
+                            } else
+                                boolZ = false;
+                            i++;
+                            c = line.charAt(i);
+
+                        }
+
+                        if (varCount < 3) {
+
+                            if (c == '+') {
+                                i++;
+                                c = line.charAt(i);
+                            } else {
+                                System.out.println("Expression is invalid 1");
+                                System.exit(0);
+                                // error handling & exit due to invalid expression. If c is a lettter
+
+                            }
+                        }
+                    } else {
+                        System.out.println("Expression is invalid 2");
                         System.exit(0);
-						// error handling for invalid variable & exit program
-					}
+                        // error handling for invalid variable & exit program
+                    }
 
-				}
+                }
 
-				if (c == ')') {
-					// Initialize clause
-					// add clause to clause list
-					Clause clause = new Clause (x, y, z, boolX, boolY, boolZ);
-					clauseList.add(clause);
+                if (c == ')') {
+                    // Initialize clause
+                    // add clause to clause list
+                    Clause clause = new Clause(x, y, z, boolX, boolY, boolZ);
+                    clauseList.add(clause);
 
-				}
-			}
-			// error handle otherwise
+                }
+            }
+            // error handle otherwise
 
-		}
+        }
 
-	}
+    }
 }

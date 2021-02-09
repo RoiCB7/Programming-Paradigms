@@ -6,7 +6,8 @@ import java.util.Scanner;
 public class Main {
     static ArrayList<Variable> listOfChar = new ArrayList<Variable>();
     static ArrayList<Clause> clauseList = new ArrayList<Clause>();
-
+    static Dpll solve = new Dpll();
+    
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         // this is a change!
@@ -14,9 +15,12 @@ public class Main {
         try {
             File InputFile = new File(args[0]);
             Scanner readFile = new Scanner(InputFile);
-            System.out.println("File open was a Success!");
+            //System.out.println("File open was a Success!");
             textProcess(readFile);
-
+            
+           Boolean answer =  solve.solver(listOfChar, clauseList, true);
+           System.out.println("This is the answer: " + answer);
+            /*
             System.out.print("Contents of Arraylist: ");
             for (int i = 0; i < listOfChar.size(); i++) {
                 System.out.println(listOfChar.get(i));
@@ -30,7 +34,7 @@ public class Main {
                 System.out.print(clauseList.get(i).isBool_a());
                 System.out.print(clauseList.get(i).isBool_b());
                 System.out.print(clauseList.get(i).isBool_c());
-            }
+            }*/
 
         }
 
@@ -44,7 +48,7 @@ public class Main {
         Variable newVar = new Variable(c);
 
         if (listOfChar.contains(newVar)) {
-            System.out.println("Char " + newVar.getVarName() + " already exists in array");
+           // System.out.println("Char " + newVar.getVarName() + " already exists in array");
         } else
 
             listOfChar.add(newVar);
@@ -91,7 +95,7 @@ public class Main {
                     if ((c <= 'z') && (c >= 'a')) {
                         checkChar(c);
                         varCount++;
-                        System.out.println("Variable Count " + varCount);
+                     //   System.out.println("Variable Count " + varCount);
 
                         if (varCount == 1) {
                             x = c;
@@ -121,15 +125,15 @@ public class Main {
                                 i++;
                                 c = line.charAt(i);
                             } else {
-                                System.out.println("Expression is invalid 1");
-                                System.exit(0);
+                            //    System.out.println("Expression is invalid 1");
+                             //   System.exit(0);
                                 // error handling & exit due to invalid expression. If c is a lettter
 
                             }
                         }
                     } else {
-                        System.out.println("Expression is invalid 2");
-                        System.exit(0);
+                      //  System.out.println("Expression is invalid 2");
+                      //  System.exit(0);
                         // error handling for invalid variable & exit program
                     }
 

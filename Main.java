@@ -17,7 +17,7 @@ public class Main {
             Scanner readFile = new Scanner(InputFile);
             //System.out.println("File open was a Success!");
             textProcess(readFile);
-            
+            System.out.println("File open was a Success!");
            Boolean answer =  solve.solver(listOfChar, clauseList, true);
            System.out.println("This is the answer: " + answer);
             /*

@@ -49,7 +49,7 @@ public class Dpll {
 
 			}
 
-			if (isSolved && clause.getVar_b() == listOfChar.get(0).getVarName()) {
+			if (!isSolved && clause.getVar_b() == listOfChar.get(0).getVarName()) {
 
 				check = clause.isBool_b();
 
@@ -60,7 +60,7 @@ public class Dpll {
 				}
 			}
 
-			if (isSolved && clause.getVar_c() == listOfChar.get(0).getVarName()) {
+			if (!isSolved && clause.getVar_c() == listOfChar.get(0).getVarName()) {
 
 				check = clause.isBool_c();
 

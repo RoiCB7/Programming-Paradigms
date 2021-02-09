@@ -2,11 +2,11 @@ import java.util.ArrayList;
 
 public class Dpll {
 
-	ArrayList<Clause> clauseStorage = new ArrayList<Clause>();
 
 	public Boolean solver(ArrayList<Variable> listOfChar, ArrayList<Clause> clauseList, Boolean truthVal) {
 		
-
+		ArrayList<Clause> clauseStorage = new ArrayList<Clause>();
+		
 		if (clauseList.isEmpty()) {
 
 			return true;
@@ -90,26 +90,28 @@ public class Dpll {
 		Boolean success = solver(listOfChar, clauseList, truthVal);
 	
 
-		if (success == true) {
-			return success;
-		}
-
-		else {
-
-			// add back char and add back clauses
-			// toggle truth values; truthVal
-			// then recurse
-
-			// append clauseStorage to start of clauseList or add clauseStorage to end of
-			// clauseList
-			
+	
+		 if (!success && varStorage.getRun() == true) {
+	
+		
 			listOfChar.add(0, varStorage);
 			clauseList.addAll(clauseStorage);
+
+			listOfChar.get(0).setRun(false);
+
+			//If it's a char first run
+			//flip that char run to false
+			//set other chars in list to first run
 			
-			
+			for (int i = 1; i < listOfChar.size(); i++) {
+				listOfChar.get(i).setRun(true);
+			}
+
 			return solver(listOfChar, clauseList, !truthVal);
 
 		}
+		 
+		 return success;
 
 		
 	}

@@ -3,10 +3,12 @@ public class Variable {
 
     private final char varName;
     private Boolean truthAsg;
+    private Boolean firstRun;
 
     public Variable(char varName) {
         super();
         this.varName = varName;
+        this.firstRun = true;
     }
 
     public Boolean getTruthAsg() {
@@ -19,5 +21,13 @@ public class Variable {
 
     public char getVarName() {
         return varName;
+    }
+    
+    public Boolean getRun() {
+        return firstRun;
+    }
+    
+    public void setRun(Boolean run) {
+    	this.firstRun = run;
     }
 }

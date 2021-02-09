@@ -5,7 +5,7 @@ public class Dpll {
 	ArrayList<Clause> clauseStorage = new ArrayList<Clause>();
 
 	public Boolean solver(ArrayList<Variable> listOfChar, ArrayList<Clause> clauseList, Boolean truthVal) {
-		char c;
+		
 
 		if (clauseList.isEmpty()) {
 
@@ -75,6 +75,7 @@ public class Dpll {
 			// don't want to process the clause after we low truth assignment solves it.
 
 		}
+		
 		clauseList.removeAll(clauseStorage);
 		// append clauseStorage with clauseList, restoring removed clauses. Then flip
 		// truth values.
@@ -85,8 +86,9 @@ public class Dpll {
 		// This point: We would remove variable from listofChar
 		Variable varStorage = listOfChar.get(0);
 		listOfChar.remove(0);
-
+		
 		Boolean success = solver(listOfChar, clauseList, truthVal);
+	
 
 		if (success == true) {
 			return success;
@@ -103,6 +105,7 @@ public class Dpll {
 			
 			listOfChar.add(0, varStorage);
 			clauseList.addAll(clauseStorage);
+			
 			
 			return solver(listOfChar, clauseList, !truthVal);
 

@@ -19,7 +19,11 @@ public class Main {
             textProcess(readFile);
             System.out.println("File open was a Success!");
            Boolean answer =  solve.solver(listOfChar, clauseList, true);
+           
+           System.out.println(clauseList.toString());
+           
            System.out.println("This is the answer: " + answer);
+           
             /*
             System.out.print("Contents of Arraylist: ");
             for (int i = 0; i < listOfChar.size(); i++) {
@@ -46,12 +50,20 @@ public class Main {
     public static void checkChar(char c) {
 
         Variable newVar = new Variable(c);
-
-        if (listOfChar.contains(newVar)) {
-           // System.out.println("Char " + newVar.getVarName() + " already exists in array");
-        } else
-
-            listOfChar.add(newVar);
+        
+        if (listOfChar.isEmpty()) {
+        	listOfChar.add(newVar);
+        }
+        else {
+        	for (Variable v : listOfChar) {
+        		if (v.getVarName() == c) {
+        			return;
+        		}
+        	}
+        	
+        	listOfChar.add(newVar);
+        }
+        	
     }
 
     public static void textProcess(Scanner readFile) {

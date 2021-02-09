@@ -107,12 +107,16 @@ public class Dpll {
 				listOfChar.get(i).setRun(true);
 			}
 
-			return solver(listOfChar, clauseList, !truthVal);
+			success =  solver(listOfChar, clauseList, !truthVal);
 
 		}
 		 
+		 if (!listOfChar.contains(varStorage)) {
+			 listOfChar.add(0, varStorage);
+			 
+		 }
+		 
 		 return success;
-
 		
 	}
 

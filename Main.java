@@ -22,6 +22,11 @@ public class Main {
            
            System.out.println(clauseList.toString());
            
+           for (Variable v : listOfChar) {
+        	   System.out.print(v.getVarName() + ": ");
+        	   System.out.println(v.getTruthAsg());
+           }
+           
            System.out.println("This is the answer: " + answer);
            
             /*

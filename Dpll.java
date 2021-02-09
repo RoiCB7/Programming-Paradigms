@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Dpll {
 
-	ArrayList<Clause> clauseStorage;
+	ArrayList<Clause> clauseStorage = new ArrayList<Clause>();
 
 	public Boolean solver(ArrayList<Variable> listOfChar, ArrayList<Clause> clauseList, Boolean truthVal) {
 		char c;
@@ -28,6 +28,7 @@ public class Dpll {
 		Boolean check;
 		Boolean isSolved;
 
+		
 		for (Clause clause : clauseList) {
 
 			isSolved = false;
@@ -42,7 +43,7 @@ public class Dpll {
 					// means clause is good? I.E remove clause from clause list
 					// add to clause Storage
 					clauseStorage.add(clause);
-					clauseList.remove(clause);
+					//clauseList.remove(clause);
 					isSolved = true;
 
 				}
@@ -55,7 +56,7 @@ public class Dpll {
 
 				if (check == listOfChar.get(0).getTruthAsg()) {
 					clauseStorage.add(clause);
-					clauseList.remove(clause);
+					//clauseList.remove(clause);
 					isSolved = true;
 				}
 			}
@@ -66,14 +67,15 @@ public class Dpll {
 
 				if (check == listOfChar.get(0).getTruthAsg()) {
 					clauseStorage.add(clause);
-					clauseList.remove(clause);
+					//clauseList.remove(clause);
 					isSolved = true;
 				}
-			}
+			}						
 
 			// don't want to process the clause after we low truth assignment solves it.
 
 		}
+		clauseList.removeAll(clauseStorage);
 		// append clauseStorage with clauseList, restoring removed clauses. Then flip
 		// truth values.
 

@@ -26,22 +26,26 @@ public class Main {
 			if (answer == true) {
 
 				System.out.print("satisfiable by [");
-				
-				for (int i=0; i < listOfChar.size(); i++) {
-					System.out.print(listOfChar.get(i).getVarName() + "=");
-					System.out.print(listOfChar.get(i).getTruthAsg());
-					
-					if (i < listOfChar.size() - 1) {
-					System.out.print(", ");
+
+				for (int i = 0; i < listOfChar.size(); i++) {
+
+					if (listOfChar.get(i).getTruthAsg() != null) {
+
+						if (i > 0) {
+							System.out.print(", ");
+						}
+						
+						System.out.print(listOfChar.get(i).getVarName() + "=");
+						System.out.print(listOfChar.get(i).getTruthAsg());
+
+						
 					}
-					
 				}
 				System.out.println("]");
 
-			}
-			else
+			} else
 				System.out.println("unsatisfiable");
-			
+
 		}
 
 		catch (FileNotFoundException fnfe) {
@@ -102,7 +106,14 @@ public class Main {
 			if (c == '(') {
 
 				i++;
+
+				if (i == line.length()) {
+					System.out.println("Invalid formula");
+					System.exit(0);
+				}
+
 				c = line.charAt(i);
+
 				while (varCount < 3) {
 
 					if ((c <= 'z') && (c >= 'a')) {
@@ -138,15 +149,15 @@ public class Main {
 								i++;
 								c = line.charAt(i);
 							} else {
-								// System.out.println("Expression is invalid 1");
-								// System.exit(0);
+								System.out.println("Invalid formula");
+								System.exit(0);
 								// error handling & exit due to invalid expression. If c is a lettter
 
 							}
 						}
 					} else {
-						// System.out.println("Expression is invalid 2");
-						// System.exit(0);
+						System.out.println("Invalid formula");
+						System.exit(0);
 						// error handling for invalid variable & exit program
 					}
 
@@ -155,10 +166,17 @@ public class Main {
 				if (c == ')') {
 					// Initialize clause
 					// add clause to clause list
+
 					Clause clause = new Clause(x, y, z, boolX, boolY, boolZ);
 					clauseList.add(clause);
 
+				} else {
+					System.out.println("Invalid formula");
+					System.exit(0);
 				}
+			} else {
+				System.out.println("Invalid formula");
+				System.exit(0);
 			}
 			// error handle otherwise
 

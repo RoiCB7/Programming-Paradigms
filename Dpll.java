@@ -43,7 +43,6 @@ public class Dpll {
 					// means clause is good? I.E remove clause from clause list
 					// add to clause Storage
 					clauseStorage.add(clause);
-					//clauseList.remove(clause);
 					isSolved = true;
 
 				}
@@ -56,7 +55,6 @@ public class Dpll {
 
 				if (check == listOfChar.get(0).getTruthAsg()) {
 					clauseStorage.add(clause);
-					//clauseList.remove(clause);
 					isSolved = true;
 				}
 			}
@@ -67,7 +65,6 @@ public class Dpll {
 
 				if (check == listOfChar.get(0).getTruthAsg()) {
 					clauseStorage.add(clause);
-					//clauseList.remove(clause);
 					isSolved = true;
 				}
 			}						

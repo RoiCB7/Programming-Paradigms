@@ -4,6 +4,9 @@
  * It holds the getters and setters for the variable structure
  * as well as the constructor.
  *
+ * Each variable has several attributes such as a name, truth value, and indicator
+ * to determine if that variable's truth value was already toggled in case of backtracking.
+ *
  */
 
 

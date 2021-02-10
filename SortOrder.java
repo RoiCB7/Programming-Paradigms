@@ -1,5 +1,10 @@
 import java.util.Comparator;
 
+/*
+ * This class contains a method that will order the array list in alphabetical order. 
+ * 
+ */
+
 public class SortOrder implements Comparator<Variable> {
 
 	@Override

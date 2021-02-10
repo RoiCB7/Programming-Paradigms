@@ -4,6 +4,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+/* Names: Luke Cating, Josh Lewis, Chris Botuli
+ * Emails: icati243@mtroyal.ca, jlewi359@mtroyal.ca, cbotu861@mtroyal.ca
+ * 
+ * The program will take in 3CNF formula and either provide a truth assignment that will attempt to solve
+ * the formula. It will respond with a 'satisfiable' if it finds a valid truth assignment, along with a list of
+ * the variable assignments that satisfy the formula. It will respond will unsatisfiable if it can't find 
+ * valid variable truth assignments. 
+ * 
+ * It will respond if the formula is in an invalid format.
+ * 
+ * Limitations: 3cnf09 will give the wrong answer. 
+ * 
+ */
 
 public class Main {
 	static ArrayList<Variable> listOfChar = new ArrayList<Variable>();
@@ -11,17 +24,14 @@ public class Main {
 	static Dpll solve = new Dpll();
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		// this is a change!
 
 		try {
 			File InputFile = new File(args[0]);
 			Scanner readFile = new Scanner(InputFile);
 			textProcess(readFile);
-			System.out.println("File open was a Success!");
 			Boolean answer = solve.solver(listOfChar, clauseList, true);
 
-			Collections.sort(listOfChar, new SortOrder());
+			Collections.sort(listOfChar, new SortOrder());	//sort Arraylist in alphabetical order
 
 			if (answer == true) {
 
@@ -34,11 +44,10 @@ public class Main {
 						if (i > 0) {
 							System.out.print(", ");
 						}
-						
+
 						System.out.print(listOfChar.get(i).getVarName() + "=");
 						System.out.print(listOfChar.get(i).getTruthAsg());
 
-						
 					}
 				}
 				System.out.println("]");
@@ -52,6 +61,18 @@ public class Main {
 			System.err.println("Cannot open file");
 		}
 	}
+
+	/*
+	 * Method Name: checkChar Details: checkChar will take in a character from the
+	 * input turned String. It will create a new variable based off that character.
+	 * It will only add to the listOfChar that stores variables if it is either
+	 * empty, or if it doesn't already exist in the list.
+	 * 
+	 * Input: char c
+	 * 
+	 * Returns: void
+	 * 
+	 */
 
 	public static void checkChar(char c) {
 
@@ -71,6 +92,21 @@ public class Main {
 
 	}
 
+	/*
+	 * Method Name: textProcess Details: This method will handle the processing and
+	 * parsing of the formula. It will begin with turning the file into a String,
+	 * and eliminate any spaces. It will then run the length of the String and using
+	 * a char variable, will pick up and store all valid characters. It will assign
+	 * a false value to characters with a "'". Once the char has reached a point in
+	 * the String that contains a closing bracket, provided it has passed all error
+	 * handling, it will then consider it a clause and add it to the clause list.
+	 * 
+	 * Input: Scanner readFile
+	 * 
+	 * Returns: void
+	 * 
+	 */
+
 	public static void textProcess(Scanner readFile) {
 
 		int varCount;
@@ -80,8 +116,6 @@ public class Main {
 			line += readFile.nextLine();
 			line = line.replaceAll("\\s+", "");
 		}
-
-		System.out.println("Current Clause: " + line);
 
 		Boolean boolX;
 		Boolean boolY;
@@ -119,7 +153,6 @@ public class Main {
 					if ((c <= 'z') && (c >= 'a')) {
 						checkChar(c);
 						varCount++;
-						// System.out.println("Variable Count " + varCount);
 
 						if (varCount == 1) {
 							x = c;
@@ -131,7 +164,7 @@ public class Main {
 						i++;
 						c = line.charAt(i);
 
-						if (c == '\'') {
+						if (c == '\'') { // Checking for not or "'".
 							if (varCount == 1) {
 								boolX = false;
 							} else if (varCount == 2) {
@@ -151,21 +184,18 @@ public class Main {
 							} else {
 								System.out.println("Invalid formula");
 								System.exit(0);
-								// error handling & exit due to invalid expression. If c is a lettter
 
 							}
 						}
 					} else {
 						System.out.println("Invalid formula");
 						System.exit(0);
-						// error handling for invalid variable & exit program
+
 					}
 
 				}
 
 				if (c == ')') {
-					// Initialize clause
-					// add clause to clause list
 
 					Clause clause = new Clause(x, y, z, boolX, boolY, boolZ);
 					clauseList.add(clause);
@@ -178,7 +208,6 @@ public class Main {
 				System.out.println("Invalid formula");
 				System.exit(0);
 			}
-			// error handle otherwise
 
 		}
 

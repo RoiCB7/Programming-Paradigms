@@ -1,3 +1,11 @@
+/*
+ * This is the class that holds the variable structure
+ * which is then stored in the array list created in main.
+ * It holds the getters and setters for the variable structure
+ * as well as the constructor.
+ *
+ */
+
 
 public class Variable {
 
@@ -22,11 +30,11 @@ public class Variable {
     public char getVarName() {
         return varName;
     }
-    
+
     public Boolean getRun() {
         return firstRun;
     }
-    
+
     public void setRun(Boolean run) {
     	this.firstRun = run;
     }

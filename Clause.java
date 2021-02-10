@@ -1,4 +1,10 @@
-
+/*
+ * 
+ * This class contains the details of a single Clause. Assuming the clause is in 3CNF format.
+ * Three variables and three corresponding truth assignments. 
+ * 
+ * 
+ */
 public class Clause {
     private final char var_a;
     private final char var_b;
